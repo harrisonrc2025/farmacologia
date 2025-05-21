@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doenças e Tratamentos - FÁRMACO na ODONTOLOGIA</title>
+    <style>
+        :root {
+            --azul-principal: #0047AB;
+            --azul-claro: #6495ED;
+            --rosa-principal: #FF69B4;
+            --rosa-claro: #FFC0CB;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+            --texto: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--texto);
+            line-height: 1.6;
+            background-image: url('images/windows11_bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        header {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            color: var(--branco);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            color: var(--azul-principal);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--rosa-principal);
+            display: inline-block;
+        }
+        
+        h3 {
+            color: var(--azul-principal);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        h4 {
+            color: var(--rosa-principal);
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem 0;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            color: var(--branco);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--azul-principal);
+        }
+        
+        .card h4 {
+            color: var(--azul-principal);
+            margin-top: 0;
+        }
+        
+        .card-highlight {
+            border-left: 4px solid var(--rosa-principal);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .content-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/fbbr.png" alt="Logo FBBR" class="logo">
+        </div>
+        <h1>FÁRMACO na ODONTOLOGIA</h1>
+    </header>
+    
+    <div class="nav-container">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">Página Inicial</a>
+            <a href="medicacoes.html" class="nav-button">Medicações na Odontologia</a>
+            <a href="estudos.html" class="nav-button">Estudo de Casos</a>
+            <a href="eventos.html" class="nav-button">Fotos dos Eventos</a>
+        </div>
+    </div>
+    
+    <section class="section">
+        <h2>DOENÇAS E TRATAMENTOS</h2>
+        <div class="content-container">
+            <div class="text-content">
+                <p>A saúde bucal é parte fundamental da saúde geral do indivíduo, e diversas condições patológicas podem afetar a cavidade oral. O diagnóstico precoce e o tratamento adequado são essenciais para prevenir complicações e garantir a qualidade de vida dos pacientes. Nesta seção, abordaremos as principais doenças bucais e seus respectivos tratamentos, com foco nas condições mais prevalentes na população brasileira.</p>
+            </div>
+            <div class="image-content">
+                <img src="images/lesoes_bucais.png" alt="Lesões bucais comuns" class="content-image">
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Cárie Dentária</h3>
+            <p>A cárie dentária é uma das doenças bucais mais prevalentes no mundo. Trata-se de uma doença multifatorial, resultante da interação entre bactérias cariogênicas (principalmente Streptococcus mutans), dieta rica em carboidratos fermentáveis, suscetibilidade do hospedeiro e tempo.</p>
+            
+            <p>O processo de cárie inicia-se com a desmineralização do esmalte dentário devido aos ácidos produzidos pelas bactérias durante o metabolismo dos carboidratos. Se não tratada, a lesão progride para a dentina e pode atingir a polpa dentária, causando inflamação pulpar e dor.</p>
+            
+            <h4>Classificação das Lesões de Cárie</h4>
+            <p><strong>Classificação de Black:</strong> Divide as lesões de cárie em cinco classes, de acordo com a localização no dente:</p>
+            <ul>
+                <li>Classe I: Lesões em fóssulas e fissuras de molares e pré-molares</li>
+                <li>Classe II: Lesões nas superfícies proximais de molares e pré-molares</li>
+                <li>Classe III: Lesões nas superfícies proximais de incisivos e caninos sem envolvimento do ângulo incisal</li>
+                <li>Classe IV: Lesões nas superfícies proximais de incisivos e caninos com envolvimento do ângulo incisal</li>
+                <li>Classe V: Lesões no terço cervical de qualquer dente</li>
+            </ul>
+            
+            <h4>Tratamento</h4>
+            <p>O tratamento da cárie varia conforme o estágio da lesão:</p>
+            
+            <p><strong>Lesões iniciais (manchas brancas):</strong> Podem ser tratadas de forma não invasiva, através da aplicação tópica de flúor, selantes e orientação de higiene bucal, visando a remineralização do esmalte.</p>
+            
+            <p><strong>Lesões em esmalte e dentina:</strong> Requerem a remoção do tecido cariado e restauração com materiais como resina composta, amálgama, ionômero de vidro ou cerâmica, dependendo da extensão e localização da lesão.</p>
+            
+            <p><strong>Lesões profundas com comprometimento pulpar:</strong> Podem necessitar de tratamento endodôntico (canal) antes da restauração definitiva.</p>
+            
+            <p><strong>Lesões extensas com grande destruição coronária:</strong> Podem exigir a confecção de coroas protéticas ou, em casos extremos, a extração do dente.</p>
+            
+            <h4>Abordagens Modernas no Tratamento da Cárie</h4>
+            <p><strong>Tratamento Restaurador Atraumático (ART):</strong> Técnica minimamente invasiva que utiliza instrumentos manuais para remoção do tecido cariado e ionômero de vidro de alta viscosidade para restauração.</p>
+            
+            <p><strong>Remoção Seletiva da Cárie:</strong> Abordagem que preconiza a remoção apenas do tecido infectado, preservando o tecido afetado passível de remineralização, especialmente em lesões profundas próximas à polpa.</p>
+            
+            <p><strong>Selamento de Lesões de Cárie:</strong> Em lesões não cavitadas ou minimamente cavitadas, o selamento pode deter a progressão da doença ao isolar as bactérias de seu substrato.</p>
+            
+            <h4>Prevenção</h4>
+            <p>A prevenção da cárie baseia-se no controle dos fatores etiológicos:</p>
+            <ul>
+                <li>Higiene bucal adequada (escovação com dentifrício fluoretado e uso do fio dental)</li>
+                <li>Dieta equilibrada com redução do consumo de açúcares</li>
+                <li>Uso de produtos fluoretados (água fluoretada, dentifrícios, bochechos)</li>
+                <li>Aplicação profissional de flúor e selantes</li>
+                <li>Visitas regulares ao dentista</li>
+            </ul>
+        </div>
+        
+        <div class="card card-highlight">
+            <h3>Doença Periodontal</h3>
+            <p>As doenças periodontais são infecções bacterianas que afetam os tecidos de suporte dos dentes (gengiva, ligamento periodontal, cemento radicular e osso alveolar). As duas formas mais comuns são a gengivite e a periodontite.</p>
+            
+            <h4>Gengivite</h4>
+            <p>A gengivite é a inflamação da gengiva marginal, caracterizada clinicamente por vermelhidão, edema, sangramento à sondagem e, ocasionalmente, aumento de volume gengival. É uma condição reversível, causada pelo acúmulo de biofilme dental na margem gengival.</p>
+            
+            <h4>Tratamento da Gengivite</h4>
+            <p>O tratamento da gengivite consiste em:</p>
+            <ul>
+                <li>Remoção profissional do biofilme e cálculo dental (raspagem supragengival)</li>
+                <li>Orientação de higiene bucal, incluindo técnicas adequadas de escovação e uso do fio dental</li>
+                <li>Uso de enxaguatórios bucais antissépticos, como clorexidina 0,12%, em casos mais severos</li>
+            </ul>
+            
+            <h4>Periodontite</h4>
+            <p>A periodontite é a progressão da gengivite, caracterizada pela destruição dos tecidos de suporte dos dentes, formação de bolsas periodontais, perda de inserção clínica e reabsorção óssea alveolar. Se não tratada, pode levar à mobilidade dentária e, eventualmente, à perda dos dentes.</p>
+            
+            <h4>Classificação da Periodontite (2018)</h4>
+            <p>A nova classificação das doenças periodontais (2018) divide a periodontite em estágios (I a IV) e graus (A, B, C), considerando:</p>
+            <ul>
+                <li><strong>Estágios:</strong> Baseados na severidade, complexidade e extensão/distribuição</li>
+                <li><strong>Graus:</strong> Baseados na taxa de progressão, fatores de risco e interação com saúde sistêmica</li>
+            </ul>
+            
+            <h4>Tratamento da Periodontite</h4>
+            <p>O tratamento da periodontite inclui:</p>
+            <ul>
+                <li>Raspagem e alisamento radicular (RAR) para remover o biofilme subgengival e cálculo dental</li>
+                <li>Em casos avançados, pode ser necessária cirurgia periodontal para acesso às superfícies radiculares ou regeneração dos tecidos perdidos</li>
+                <li>Terapia antimicrobiana local ou sistêmica como adjuvante em casos específicos</li>
+                <li>Manutenção periodontal regular para prevenir a recorrência da doença</li>
+            </ul>
+            
+            <h4>Abordagens Avançadas no Tratamento Periodontal</h4>
+            <p><strong>Regeneração Tecidual Guiada (RTG):</strong> Utilização de membranas e/ou enxertos ósseos para promover a regeneração dos tecidos periodontais perdidos.</p>
+            
+            <p><strong>Proteínas Derivadas da Matriz do Esmalte (Emdogain®):</strong> Aplicação de proteínas que estimulam a regeneração do cemento, ligamento periodontal e osso alveolar.</p>
+            
+            <p><strong>Terapia Fotodinâmica:</strong> Utilização de fotossensibilizadores e luz laser para eliminar bactérias periodontopatogênicas em áreas de difícil acesso.</p>
+            
+            <p><strong>Probióticos:</strong> Administração de microrganismos benéficos para modular a microbiota subgengival e reduzir a inflamação periodontal.</p>
+            
+            <h4>Fatores de Risco</h4>
+            <p>Fatores de risco como tabagismo, diabetes não controlado, estresse, predisposição genética e certas medicações devem ser gerenciados para melhorar o prognóstico do tratamento.</p>
+            
+            <h4>Relação com Doenças Sistêmicas</h4>
+            <p>Evidências científicas têm demonstrado associação entre periodontite e diversas condições sistêmicas, como doenças cardiovasculares, diabetes, resultados adversos na gravidez, doenças respiratórias, artrite reumatoide e doença de Alzheimer. Essa relação bidirecional ressalta a importância do tratamento periodontal não apenas para a saúde bucal, mas também para a saúde geral.</p>
+        </div>
+        
+        <div class="card">
+            <h3>Lesões da Mucosa Oral</h3>
+            <p>Diversas lesões podem afetar a mucosa oral, variando desde condições benignas e autolimitadas até lesões potencialmente malignas ou malignas.</p>
+            
+            <h4>Aftas</h4>
+            <p>As aftas (estomatite aftosa recorrente) são úlceras dolorosas, de formato arredondado ou oval, com centro necrótico amarelado ou acinzentado e halo eritematoso. Sua etiologia é multifatorial, envolvendo predisposição genética, estresse, trauma local, deficiências nutricionais e alterações imunológicas.</p>
+            
+            <h4>Classificação das Aftas</h4>
+            <ul>
+                <li><strong>Aftas menores:</strong> Diâmetro menor que 1 cm, cicatrização em 7-14 dias sem deixar cicatriz</li>
+                <li><strong>Aftas maiores:</strong> Diâmetro maior que 1 cm, cicatrização em 2-6 semanas, podem deixar cicatriz</li>
+                <li><strong>Aftas herpetiformes:</strong> Múltiplas lesões pequenas (1-3 mm) que podem coalescer</li>
+            </ul>
+            
+            <h4>Tratamento das Aftas</h4>
+            <p>O tratamento das aftas é principalmente sintomático:</p>
+            <ul>
+                <li>Corticosteroides tópicos (triancinolona acetonida em orabase)</li>
+                <li>Anestésicos tópicos para alívio da dor</li>
+                <li>Laserterapia de baixa potência</li>
+                <li>Em casos severos, corticosteroides sistêmicos ou outros imunossupressores podem ser necessários</li>
+            </ul>
+            
+            <h4>Herpes Simples</h4>
+            <p>A infecção pelo vírus herpes simples (HSV-1) pode manifestar-se na cavidade oral como gengivoestomatite herpética primária ou herpes labial recorrente. A forma primária é mais comum em crianças e caracteriza-se por febre, mal-estar, linfoadenopatia e múltiplas vesículas que se rompem formando úlceras dolorosas. A forma recorrente manifesta-se tipicamente como vesículas agrupadas no vermelhão do lábio.</p>
+            
+            <h4>Tratamento do Herpes Simples</h4>
+            <p>O tratamento inclui:</p>
+            <ul>
+                <li>Antivirais tópicos (aciclovir, penciclovir) ou sistêmicos (aciclovir, valaciclovir, famciclovir), especialmente se iniciados na fase prodrômica</li>
+                <li>Medicação sintomática para alívio da dor e febre</li>
+                <li>Hidratação adequada e dieta líquida ou pastosa em casos severos</li>
+            </ul>
+            
+            <h4>Candidíase Oral</h4>
+            <p>A candidíase oral é uma infecção fúngica causada principalmente pela Candida albicans. Pode manifestar-se como placas brancas removíveis (pseudomembranosa), áreas eritematosas (eritematosa) ou hiperplasia epitelial com placas brancas não removíveis (hiperplásica). Fatores predisponentes incluem imunossupressão, uso de antibióticos de amplo espectro, próteses mal adaptadas e xerostomia.</p>
+            
+            <h4>Tratamento da Candidíase Oral</h4>
+            <p>O tratamento da candidíase oral baseia-se em:</p>
+            <ul>
+                <li>Antifúngicos tópicos: nistatina suspensão oral, miconazol gel</li>
+                <li>Em casos resistentes ou em pacientes imunossuprimidos: antifúngicos sistêmicos como fluconazol</li>
+                <li>Controle dos fatores predisponentes: higienização adequada de próteses, controle de doenças sistêmicas, etc.</li>
+            </ul>
+            
+            <h4>Líquen Plano Oral</h4>
+            <p>O líquen plano oral é uma doença inflamatória crônica de origem autoimune que afeta a mucosa oral. Clinicamente, pode apresentar-se como estrias brancas reticulares (forma reticular), áreas eritematosas (forma eritematosa) ou úlceras dolorosas (forma erosiva).</p>
+            
+            <h4>Tratamento do Líquen Plano Oral</h4>
+            <p>O tratamento do líquen plano oral visa controlar os sintomas e prevenir a transformação maligna (rara, mas possível nas formas erosivas):</p>
+            <ul>
+                <li>Corticosteroides tópicos de alta potência (propionato de clobetasol 0,05%)</li>
+                <li>Em casos severos: corticosteroides sistêmicos ou outros imunossupressores</li>
+                <li>Acompanhamento regular para monitorar a evolução das lesões</li>
+            </ul>
+            
+            <h4>Mucocele</h4>
+            <p>A mucocele é uma lesão comum da mucosa oral resultante do extravasamento ou retenção de muco de glândulas salivares menores. Clinicamente, apresenta-se como uma bolha ou nódulo translúcido ou azulado, geralmente no lábio inferior. Quando ocorre no assoalho bucal, é denominada rânula.</p>
+            
+            <h4>Tratamento da Mucocele</h4>
+            <p>O tratamento consiste na excisão cirúrgica da lesão juntamente com as glândulas salivares menores associadas, para prevenir recidivas.</p>
+        </div>
+        
+        <div class="card card-highlight">
+            <h3>Disfunção Temporomandibular (DTM)</h3>
+            <p>A disfunção temporomandibular engloba um grupo de condições que afetam a articulação temporomandibular (ATM), os músculos mastigatórios e estruturas associadas. Os sintomas incluem dor na região da ATM, limitação ou desvio na abertura bucal, ruídos articulares (estalos ou crepitação) e dor nos músculos mastigatórios.</p>
+            
+            <h4>Classificação das DTMs (DC/TMD)</h4>
+            <p>O Diagnostic Criteria for Temporomandibular Disorders (DC/TMD) classifica as DTMs em:</p>
+            <ul>
+                <li><strong>Desordens articulares:</strong> Deslocamento de disco com ou sem redução, doenças degenerativas, subluxação</li>
+                <li><strong>Desordens musculares:</strong> Mialgia local, dor miofascial, dor miofascial com referência</li>
+                <li><strong>Cefaleia atribuída à DTM</strong></li>
+            </ul>
+            
+            <h4>Tratamento da DTM</h4>
+            <p>O tratamento da DTM é multidisciplinar e pode incluir:</p>
+            <ul>
+                <li><strong>Terapia comportamental:</strong> Orientações sobre hábitos parafuncionais, técnicas de relaxamento, controle do estresse</li>
+                <li><strong>Fisioterapia:</strong> Exercícios mandibulares, termoterapia, ultrassom, laserterapia, eletroestimulação</li>
+                <li><strong>Farmacoterapia:</strong> Analgésicos, anti-inflamatórios, relaxantes musculares, antidepressivos em baixa dose</li>
+                <li><strong>Placas oclusais:</strong> Dispositivos intraorais que reduzem a sobrecarga na ATM e nos músculos mastigatórios</li>
+                <li><strong>Procedimentos minimamente invasivos:</strong> Infiltrações com corticosteroides, ácido hialurônico ou toxina botulínica</li>
+                <li><strong>Procedimentos cirúrgicos:</strong> Artrocentese, artroscopia ou cirurgia aberta da ATM em casos específicos</li>
+            </ul>
+            
+            <h4>Abordagens Complementares</h4>
+            <p>Terapias complementares como acupuntura, mindfulness e biofeedback têm mostrado resultados promissores no manejo da dor crônica associada à DTM.</p>
+        </div>
+        
+        <div class="card">
+            <h3>Traumatismo Dentário</h3>
+            <p>Os traumatismos dentários são lesões que afetam os dentes e tecidos de suporte, resultantes de impactos físicos. Podem variar desde fraturas simples de esmalte até avulsão completa do dente.</p>
+            
+            <h4>Classificação dos Traumatismos Dentários</h4>
+            <p>Segundo a classificação de Andreasen:</p>
+            <ul>
+                <li><strong>Lesões dos tecidos duros dentários e da polpa:</strong> Fratura de esmalte, fratura de esmalte e dentina, fratura coronária complicada, fratura corono-radicular, fratura radicular</li>
+                <li><strong>Lesões dos tecidos periodontais:</strong> Concussão, subluxação, luxação extrusiva, luxação lateral, luxação intrusiva, avulsão</li>
+                <li><strong>Lesões dos tecidos de suporte:</strong> Fratura do processo alveolar, fratura da mandíbula ou maxila</li>
+            </ul>
+            
+            <h4>Tratamento dos Traumatismos Dentários</h4>
+            <p>O tratamento varia conforme o tipo de traumatismo:</p>
+            <ul>
+                <li><strong>Fratura de esmalte:</strong> Polimento ou restauração com resina composta</li>
+                <li><strong>Fratura de esmalte e dentina:</strong> Proteção pulpar indireta e restauração</li>
+                <li><strong>Fratura com exposição pulpar:</strong> Proteção pulpar direta, pulpotomia ou tratamento endodôntico, seguido de restauração</li>
+                <li><strong>Luxação:</strong> Reposicionamento do dente e contenção, se necessário</li>
+                <li><strong>Avulsão:</strong> Reimplante imediato (idealmente em até 60 minutos) e contenção, seguido de tratamento endodôntico</li>
+            </ul>
+            
+            <h4>Meios de Armazenamento para Dentes Avulsionados</h4>
+            <p>Em ordem de preferência:</p>
+            <ol>
+                <li>Solução balanceada de Hank (HBSS)</li>
+                <li>Leite</li>
+                <li>Saliva (vestíbulo bucal)</li>
+                <li>Soro fisiológico</li>
+                <li>Água (apenas como último recurso)</li>
+            </ol>
+            
+            <p>O prognóstico depende do tipo de traumatismo, tempo decorrido até o atendimento e condições de armazenamento do fragmento ou dente avulsionado.</p>
+        </div>
+        
+        <div class="card card-highlight">
+            <h3>Lesões Potencialmente Malignas e Câncer Bucal</h3>
+            <p>As lesões potencialmente malignas são alterações teciduais que apresentam risco aumentado de transformação maligna. As principais são a leucoplasia (placa branca não removível), eritroplasia (mancha vermelha) e queilite actínica (alterações no vermelhão do lábio inferior devido à exposição solar crônica).</p>
+            
+            <h4>Leucoplasia</h4>
+            <p>A leucoplasia é definida como "placa predominantemente branca de risco questionável, excluindo outras doenças ou distúrbios conhecidos que não carregam risco aumentado de câncer". O risco de transformação maligna varia de 0,13% a 34%, dependendo de fatores como:</p>
+            <ul>
+                <li>Tipo clínico (não homogênea > homogênea)</li>
+                <li>Localização (assoalho bucal, borda lateral da língua > outras regiões)</li>
+                <li>Tamanho (> 200 mm²)</li>
+                <li>Presença e grau de displasia epitelial</li>
+            </ul>
+            
+            <h4>Eritroplasia</h4>
+            <p>A eritroplasia é definida como "mancha vermelha que não pode ser caracterizada clínica ou patologicamente como qualquer outra doença". Apresenta maior potencial de transformação maligna que a leucoplasia, com até 90% das lesões já apresentando displasia severa, carcinoma in situ ou carcinoma invasivo no momento do diagnóstico.</p>
+            
+            <h4>Queilite Actínica</h4>
+            <p>A queilite actínica é uma alteração do vermelhão do lábio inferior causada pela exposição crônica à radiação ultravioleta. Clinicamente, caracteriza-se por atrofia, ressecamento, descamação, áreas leucoplásicas e apagamento da linha mucocutânea. O risco de transformação maligna varia de 10% a 30%.</p>
+            
+            <h4>Câncer Bucal</h4>
+            <p>O câncer bucal é uma neoplasia maligna que pode afetar qualquer região da cavidade oral, sendo mais comum em língua, assoalho bucal e lábio inferior. O tipo histológico mais frequente é o carcinoma espinocelular (90-95% dos casos). Os principais fatores de risco são tabagismo, etilismo, exposição solar crônica (para câncer de lábio) e infecção pelo papilomavírus humano (HPV).</p>
+            
+            <h4>Sinais de Alerta para Câncer Bucal</h4>
+            <ul>
+                <li>Úlcera que não cicatriza em 15 dias</li>
+                <li>Manchas brancas ou vermelhas persistentes</li>
+                <li>Nódulo ou endurecimento na mucosa oral</li>
+                <li>Dificuldade para mastigar, engolir ou movimentar a língua</li>
+                <li>Sensação de corpo estranho na garganta</li>
+                <li>Rouquidão persistente</li>
+                <li>Linfonodomegalia cervical</li>
+            </ul>
+            
+            <h4>Diagnóstico</h4>
+            <p>O diagnóstico das lesões potencialmente malignas e do câncer bucal baseia-se em:</p>
+            <ul>
+                <li>Exame clínico minucioso da cavidade oral</li>
+                <li>Biópsia para análise histopatológica</li>
+                <li>Exames complementares de imagem (TC, RM) para estadiamento do câncer</li>
+            </ul>
+            
+            <h4>Tratamento das Lesões Potencialmente Malignas</h4>
+            <p>O manejo das lesões potencialmente malignas inclui:</p>
+            <ul>
+                <li>Biópsia para diagnóstico histopatológico</li>
+                <li>Remoção completa da lesão, quando possível</li>
+                <li>Eliminação dos fatores de risco</li>
+                <li>Acompanhamento regular para detecção precoce de recidivas ou transformação maligna</li>
+            </ul>
+            
+            <h4>Tratamento do Câncer Bucal</h4>
+            <p>O tratamento do câncer bucal depende do estágio da doença e pode incluir:</p>
+            <ul>
+                <li>Cirurgia para remoção do tumor e, quando necessário, esvaziamento cervical</li>
+                <li>Radioterapia, isolada ou como adjuvante à cirurgia</li>
+                <li>Quimioterapia, geralmente em combinação com radioterapia em casos avançados</li>
+                <li>Terapias-alvo e imunoterapia em casos específicos</li>
+            </ul>
+            
+            <p>O diagnóstico precoce é fundamental para melhorar o prognóstico e reduzir a morbidade associada ao tratamento.</p>
+        </div>
+        
+        <div class="card">
+            <h3>Halitose</h3>
+            <p>A halitose, ou mau hálito, é uma condição caracterizada por odor desagradável emanado da cavidade oral. Afeta cerca de 30% da população mundial e pode ter impacto significativo na qualidade de vida e nas relações sociais dos indivíduos acometidos.</p>
+            
+            <h4>Classificação da Halitose</h4>
+            <ul>
+                <li><strong>Halitose genuína:</strong>
+                    <ul>
+                        <li><strong>Fisiológica:</strong> Relacionada a condições temporárias como jejum prolongado, desidratação, alimentos odoríferos</li>
+                        <li><strong>Patológica:</strong>
+                            <ul>
+                                <li><strong>Oral:</strong> Causada por condições bucais (85-90% dos casos)</li>
+                                <li><strong>Extra-oral:</strong> Originada em outras partes do corpo (10-15% dos casos)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Pseudo-halitose:</strong> Percepção de mau hálito pelo paciente, sem confirmação objetiva</li>
+                <li><strong>Halitofobia:</strong> Medo excessivo de ter mau hálito, mesmo após tratamento da halitose genuína ou pseudo-halitose</li>
+            </ul>
+            
+            <h4>Causas da Halitose</h4>
+            <p><strong>Causas orais:</strong></p>
+            <ul>
+                <li>Biofilme lingual (principal causa)</li>
+                <li>Doença periodontal</li>
+                <li>Cárie dentária</li>
+                <li>Infecções orais</li>
+                <li>Xerostomia (boca seca)</li>
+                <li>Próteses mal higienizadas</li>
+            </ul>
+            
+            <p><strong>Causas extra-orais:</strong></p>
+            <ul>
+                <li>Doenças do trato respiratório (sinusite, tonsilite, bronquite)</li>
+                <li>Doenças do trato digestivo (refluxo gastroesofágico, H. pylori)</li>
+                <li>Doenças metabólicas (diabetes, insuficiência renal)</li>
+                <li>Medicamentos que causam xerostomia</li>
+            </ul>
+            
+            <h4>Diagnóstico</h4>
+            <p>O diagnóstico da halitose baseia-se em:</p>
+            <ul>
+                <li>Anamnese detalhada</li>
+                <li>Exame clínico da cavidade oral</li>
+                <li>Métodos de avaliação do hálito:
+                    <ul>
+                        <li>Teste organoléptico (avaliação pelo examinador)</li>
+                        <li>Monitores de compostos sulfurados voláteis (Halimeter®)</li>
+                        <li>Cromatografia gasosa</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h4>Tratamento</h4>
+            <p>O tratamento da halitose depende da causa identificada:</p>
+            <ul>
+                <li><strong>Halitose de origem oral:</strong>
+                    <ul>
+                        <li>Higiene bucal adequada, incluindo limpeza da língua</li>
+                        <li>Tratamento de doenças bucais (cárie, doença periodontal)</li>
+                        <li>Uso de enxaguatórios bucais com agentes antimicrobianos (clorexidina, cloreto de cetilpiridínio) e/ou neutralizadores de odor (zinco, dióxido de cloro)</li>
+                        <li>Estímulo do fluxo salivar em casos de xerostomia</li>
+                    </ul>
+                </li>
+                <li><strong>Halitose de origem extra-oral:</strong> Encaminhamento ao especialista adequado (otorrinolaringologista, gastroenterologista, etc.)</li>
+                <li><strong>Pseudo-halitose e halitofobia:</strong> Abordagem psicológica, podendo incluir terapia cognitivo-comportamental</li>
+            </ul>
+        </div>
+        
+        <div class="card card-highlight">
+            <h3>Bruxismo</h3>
+            <p>O bruxismo é definido como uma atividade repetitiva dos músculos mastigatórios caracterizada pelo apertamento ou ranger dos dentes e/ou pelo travamento ou empurramento da mandíbula. Pode ocorrer durante o sono (bruxismo do sono) ou durante a vigília (bruxismo em vigília).</p>
+            
+            <h4>Classificação do Bruxismo</h4>
+            <ul>
+                <li><strong>Quanto ao momento de ocorrência:</strong>
+                    <ul>
+                        <li>Bruxismo do sono</li>
+                        <li>Bruxismo em vigília</li>
+                    </ul>
+                </li>
+                <li><strong>Quanto à etiologia:</strong>
+                    <ul>
+                        <li>Primário/idiopático (sem causa aparente)</li>
+                        <li>Secundário (associado a condições médicas, uso de medicamentos ou drogas)</li>
+                    </ul>
+                </li>
+                <li><strong>Quanto ao tipo de atividade muscular:</strong>
+                    <ul>
+                        <li>Tônico (apertamento)</li>
+                        <li>Fásico (ranger)</li>
+                        <li>Misto</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h4>Sinais e Sintomas</h4>
+            <ul>
+                <li>Desgaste dentário anormal</li>
+                <li>Fratura de restaurações ou dentes</li>
+                <li>Hipertrofia dos músculos masseteres</li>
+                <li>Dor muscular ou articular</li>
+                <li>Cefaleia, especialmente ao acordar</li>
+                <li>Mobilidade dentária</li>
+                <li>Sensibilidade dentária</li>
+                <li>Linhas de estresse na mucosa jugal</li>
+            </ul>
+            
+            <h4>Diagnóstico</h4>
+            <p>O diagnóstico do bruxismo baseia-se em:</p>
+            <ul>
+                <li>Anamnese (relato do paciente ou companheiro de quarto)</li>
+                <li>Exame clínico (sinais de desgaste dentário, hipertrofia muscular)</li>
+                <li>Polissonografia (padrão-ouro para bruxismo do sono)</li>
+                <li>Eletromiografia dos músculos mastigatórios</li>
+            </ul>
+            
+            <h4>Tratamento</h4>
+            <p>O tratamento do bruxismo é multidisciplinar e visa controlar os sintomas e prevenir danos às estruturas bucais:</p>
+            <ul>
+                <li><strong>Placas oclusais:</strong> Dispositivos intraorais que protegem os dentes e reduzem a atividade muscular</li>
+                <li><strong>Terapia comportamental:</strong> Técnicas de relaxamento, biofeedback, higiene do sono</li>
+                <li><strong>Farmacoterapia:</strong> Relaxantes musculares, ansiolíticos, antidepressivos (em casos selecionados)</li>
+                <li><strong>Toxina botulínica:</strong> Injeções nos músculos mastigatórios para reduzir a hiperatividade muscular</li>
+                <li><strong>Fisioterapia:</strong> Exercícios, massagem, termoterapia</li>
+                <li><strong>Restaurações dentárias:</strong> Reabilitação dos dentes com desgaste severo</li>
+            </ul>
+            
+            <p>O controle de fatores associados, como estresse, ansiedade, distúrbios do sono e uso de substâncias estimulantes, é fundamental para o manejo adequado do bruxismo.</p>
+        </div>
+        
+        <h3>Prevenção das Doenças Bucais</h3>
+        <p>A prevenção das doenças bucais baseia-se em medidas como:</p>
+        <ul>
+            <li>Higiene oral adequada (escovação com dentifrício fluoretado, uso do fio dental e limpador de língua)</li>
+            <li>Dieta equilibrada, com redução do consumo de açúcares</li>
+            <li>Cessação do tabagismo e redução do consumo de álcool</li>
+            <li>Proteção solar para prevenção do câncer de lábio</li>
+            <li>Uso de equipamentos de proteção durante atividades esportivas para prevenção de traumatismos</li>
+            <li>Visitas regulares ao dentista para exames preventivos e diagnóstico precoce</li>
+        </ul>
+        
+        <p>A educação em saúde bucal e o acesso a serviços odontológicos são essenciais para reduzir a prevalência dessas condições e melhorar a qualidade de vida da população.</p>
+        
+        <a href="index.html" class="back-button">Voltar para a Página Inicial</a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 FÁRMACO na ODONTOLOGIA - PROF. CAROLINE AZEVEDO - Todos os direitos reservados</p>
+        <p>Desenvolvido para a Faculdade do Recôncavo (FBBR)</p>
+    </footer>
+</body>
+</html>

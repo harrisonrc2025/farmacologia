@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo de Casos - FÁRMACO na ODONTOLOGIA</title>
+    <style>
+        :root {
+            --azul-principal: #0047AB;
+            --azul-claro: #6495ED;
+            --rosa-principal: #FF69B4;
+            --rosa-claro: #FFC0CB;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+            --texto: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--texto);
+            line-height: 1.6;
+            background-image: url('images/windows11_bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        header {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            color: var(--branco);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            color: var(--azul-principal);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--rosa-principal);
+            display: inline-block;
+        }
+        
+        h3 {
+            color: var(--azul-principal);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        h4 {
+            color: var(--rosa-principal);
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem 0;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            color: var(--branco);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .case-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--azul-principal);
+        }
+        
+        .case-card h3 {
+            color: var(--azul-principal);
+            margin-top: 0;
+        }
+        
+        .case-card-highlight {
+            border-left: 4px solid var(--rosa-principal);
+        }
+        
+        .case-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+            background-color: rgba(240, 240, 240, 0.7);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .case-detail {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .case-detail h5 {
+            color: var(--azul-principal);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--azul-principal), var(--rosa-principal));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: linear-gradient(135deg, var(--azul-principal), var(--rosa-principal));
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h4 {
+            margin-top: 0;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+        
+        .gallery-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .image-caption {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--texto);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .content-container {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/fbbr.png" alt="Logo FBBR" class="logo">
+        </div>
+        <h1>FÁRMACO na ODONTOLOGIA</h1>
+    </header>
+    
+    <div class="nav-container">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">Página Inicial</a>
+            <a href="medicacoes.html" class="nav-button">Medicações na Odontologia</a>
+            <a href="doencas.html" class="nav-button">Doenças e Tratamentos</a>
+            <a href="eventos.html" class="nav-button">Fotos dos Eventos</a>
+        </div>
+    </div>
+    
+    <section class="section">
+        <h2>ESTUDO DE CASOS</h2>
+        <div class="content-container">
+            <div class="text-content">
+                <p>O estudo de casos clínicos é uma ferramenta fundamental para o aprendizado e aprimoramento da prática odontológica. Através da análise detalhada de situações reais, é possível compreender melhor as diversas condições bucais, suas manifestações clínicas, métodos diagnósticos e abordagens terapêuticas.</p>
+                
+                <p>Nesta seção, apresentamos uma série de casos clínicos em diferentes especialidades odontológicas, com foco na farmacologia aplicada a cada situação. Os casos foram selecionados para ilustrar a importância do conhecimento farmacológico na prática clínica e demonstrar como a escolha adequada dos medicamentos pode influenciar significativamente o sucesso do tratamento.</p>
+            </div>
+            <div class="image-content">
+                <img src="images/casos_clinicos_reais.jpeg" alt="Casos clínicos reais em odontologia" class="content-image">
+            </div>
+        </div>
+        
+        <div class="image-gallery">
+            <div class="gallery-item">
+                <img src="images/caso_clinico_implante.jpeg" alt="Caso clínico de implante dentário" class="gallery-image">
+                <p class="image-caption">Radiografia de implante dentário - Caso de reabilitação com implantes</p>
+            </div>
+            <div class="gallery-item">
+                <img src="images/caso_clinico_implante_1.jpeg" alt="Caso clínico de implante dentário - vista lateral" class="gallery-image">
+                <p class="image-caption">Tomografia de implante dentário - Vista lateral</p>
+            </div>
+            <div class="gallery-item">
+                <img src="images/caso_clinico_implante_2.jpeg" alt="Caso clínico de implante dentário - vista frontal" class="gallery-image">
+                <p class="image-caption">Tomografia de implante dentário - Vista frontal</p>
+            </div>
+            <div class="gallery-item">
+                <img src="images/caso_clinico_reabilitacao.png" alt="Caso clínico de reabilitação oral" class="gallery-image">
+                <p class="image-caption">Reabilitação oral completa - Antes e depois</p>
+            </div>
+        </div>
+        
+        <div class="case-card">
+            <h3>Caso 1: Tratamento Multidisciplinar em Paciente com Doença Periodontal Avançada</h3>
+            
+            <div class="case-details">
+                <div class="case-detail">
+                    <h5>Paciente</h5>
+                    <p>Sexo feminino, 52 anos, tabagista (20 cigarros/dia há 30 anos)</p>
+                </div>
+                <div class="case-detail">
+                    <h5>Queixa Principal</h5>
+                    <p>Mobilidade dentária, sangramento gengival e halitose</p>
+                </div>
+                <div class="case-detail">
+                    <h5>Diagnóstico</h5>
+                    <p>Periodontite estágio IV, grau C, associada ao tabagismo</p>
+                </div>
+            </div>
+            
+            <h4>História Clínica</h4>
+            <p>Paciente compareceu à clínica odontológica queixando-se de mobilidade dentária, sangramento gengival espontâneo e ao escovar os dentes, além de mau hálito persistente. Relatou que já havia notado a perda de alguns dentes nos últimos anos e que seus familiares frequentemente comentavam sobre seu mau hálito. Negou doenças sistêmicas, mas confirmou ser tabagista há 30 anos, consumindo aproximadamente 20 cigarros por dia.</p>
+            
+            <h4>Exame Clínico</h4>
+            <p>Ao exame clínico, observou-se:</p>
+            <ul>
+                <li>Ausência dos elementos 16, 26, 36, 46 e 47</li>
+                <li>Mobilidade grau II nos elementos 12, 11, 21, 22, 31, 32, 41 e 42</li>
+                <li>Mobilidade grau III nos elementos 17 e 27</li>
+                <li>Recessão gengival generalizada</li>
+                <li>Presença de cálculo supra e subgengival</li>
+                <li>Sangramento à sondagem em 78% dos sítios</li>
+                <li>Profundidade de sondagem variando de 5 a 9 mm, principalmente na região anterior</li>
+                <li>Lesões de furca grau II nos elementos 17 e 27</li>
+                <li>Saburra lingual</li>
+            </ul>
+            
+            <h4>Exames Complementares</h4>
+            <p>A radiografia panorâmica e as radiografias periapicais revelaram perda óssea horizontal generalizada, com perda óssea vertical localizada nas regiões dos elementos 17, 27, 15 e 25. Observou-se também envolvimento de furca nos molares superiores.</p>
+            
+            <h4>Plano de Tratamento</h4>
+            <p>Foi estabelecido um plano de tratamento multidisciplinar, envolvendo as seguintes etapas:</p>
+            
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h4>Fase Inicial</h4>
+                        <p>1. Orientação de higiene bucal e técnicas de escovação</p>
+                        <p>2. Aconselhamento para cessação do tabagismo</p>
+                        <p>3. Raspagem e alisamento radicular em sessões por quadrante</p>
+                        <p>4. Prescrição de antimicrobianos: Amoxicilina 500mg + Metronidazol 400mg, 3x/dia por 7 dias</p>
+                        <p>5. Prescrição de enxaguatório bucal com clorexidina 0,12%, 2x/dia por 14 dias</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h4>Fase Cirúrgica</h4>
+                        <p>1. Exodontia dos elementos 17 e 27 (prognóstico desfavorável)</p>
+                        <p>2. Cirurgia periodontal a retalho nos sextantes anteriores para acesso às superfícies radiculares</p>
+                        <p>3. Prescrição pré-operatória: Dexametasona 4mg, 1 hora antes do procedimento</p>
+                        <p>4. Prescrição pós-operatória: Ibuprofeno 600mg, 8/8h por 3 dias e Dipirona 500mg, 6/6h (se dor)</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h4>Fase Reabilitadora</h4>
+                        <p>1. Instalação de implantes nas regiões dos elementos 16, 26, 36 e 46</p>
+                        <p>2. Confecção de próteses fixas sobre implantes</p>
+                        <p>3. Contenção dos dentes anteriores inferiores com fio ortodôntico e resina composta</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h4>Fase de Manutenção</h4>
+                        <p>1. Consultas de manutenção periodontal a cada 3 meses no primeiro ano</p>
+                        <p>2. Reforço das orientações de higiene bucal e cessação do tabagismo</p>
+                        <p>3. Aplicação profissional de flúor</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h4>Discussão Farmacológica</h4>
+            <p>A associação de Amoxicilina e Metronidazol foi escolhida como terapia antimicrobiana sistêmica devido à sua eficácia contra a microbiota periodontopatogênica. A Amoxicilina é eficaz contra bactérias aeróbias e anaeróbias facultativas, enquanto o Metronidazol atua especificamente contra anaeróbios estritos, como Porphyromonas gingivalis e Tannerella forsythia, frequentemente associados à periodontite.</p>
+            
+            <p>A clorexidina 0,12% foi prescrita como coadjuvante ao tratamento mecânico, devido à sua substantividade (capacidade de permanecer ativa na cavidade oral por até 12 horas) e amplo espectro antimicrobiano. Seu uso foi limitado a 14 dias para evitar efeitos adversos como manchamento dentário e alteração do paladar.</p>
+            
+            <p>Na fase cirúrgica, a Dexametasona foi administrada pré-operatoriamente para controle do edema pós-operatório, devido à sua potente ação anti-inflamatória e longa meia-vida (36-54 horas). Para o controle da dor pós-operatória, optou-se pelo Ibuprofeno, um anti-inflamatório não esteroidal com boa eficácia analgésica e anti-inflamatória, complementado pela Dipirona como analgésico de resgate.</p>
+            
+            <h4>Resultados</h4>
+            <p>Após 6 meses de tratamento, observou-se:</p>
+            <ul>
+                <li>Redução significativa da profundidade de sondagem (média de 3,2 mm)</li>
+                <li>Redução do sangramento à sondagem para 18% dos sítios</li>
+                <li>Estabilização da mobilidade dentária</li>
+                <li>Melhora da halitose</li>
+                <li>Redução do consumo de cigarros para 5 por dia</li>
+                <li>Osseointegração bem-sucedida dos implantes</li>
+                <li>Reabilitação protética com restabelecimento da função mastigatória e estética</li>
+            </ul>
+            
+            <h4>Conclusão</h4>
+            <p>Este caso ilustra a importância da abordagem multidisciplinar e do controle dos fatores de risco para o sucesso do tratamento periodontal. A terapia farmacológica adequada, associada ao tratamento mecânico e cirúrgico, foi fundamental para o controle da infecção periodontal e a reabilitação funcional e estética da paciente. O acompanhamento a longo prazo e a manutenção periodontal regular são essenciais para a estabilidade dos resultados obtidos.</p>
+        </div>
+        
+        <div class="case-card case-card-highlight">
+            <h3>Caso 2: Reabilitação Oral Complexa em Paciente com Desgaste Dentário Severo</h3>
+            
+            <div class="case-details">
+                <div class="case-detail">
+                    <h5>Paciente</h5>
+                    <p>Sexo masculino, 45 anos, executivo de multinacional</p>
+                </div>
+                <div class="case-detail">
+                    <h5>Queixa Principal</h5>
+                    <p>Sensibilidade dentária, dificuldade para mastigar e insatisfação estética</p>
+                </div>
+                <div class="case-detail">
+                    <h5>Diagnóstico</h5>
+                    <p>Desgaste dentário generalizado devido a bruxismo e erosão ácida</p>
+                </div>
+            </div>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Tratamento odontológico - Reabilitação oral" class="gallery-image">
+                    <p class="image-caption">Procedimento de reabilitação oral - Fase inicial</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Tratamento odontológico - Procedimento" class="gallery-image">
+                    <p class="image-caption">Procedimento de reabilitação oral - Fase intermediária</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Tratamento odontológico - Resultado final" class="gallery-image">
+                    <p class="image-caption">Procedimento de reabilitação oral - Avaliação final</p>
+                </div>
+            </div>
+            
+            <h4>História Clínica</h4>
+            <p>Paciente procurou atendimento odontológico queixando-se de sensibilidade dentária ao ingerir alimentos frios e ácidos, dificuldade para mastigar alimentos mais duros e insatisfação com a aparência de seus dentes, que considerava "curtos e amarelados". Relatou trabalhar sob grande pressão, dormir poucas horas por noite e consumir frequentemente bebidas ácidas (refrigerantes e sucos cítricos) e café. Sua esposa confirmou que ele rangia os dentes durante o sono. Negou doenças sistêmicas e uso contínuo de medicamentos.</p>
+            
+            <h4>Exame Clínico</h4>
+            <p>Ao exame clínico, observou-se:</p>
+            <ul>
+                <li>Desgaste dentário generalizado, mais acentuado nos dentes anteriores e nas cúspides dos molares</li>
+                <li>Redução da dimensão vertical de oclusão</li>
+                <li>Exposição de dentina nos bordos incisais dos dentes anteriores e nas cúspides dos posteriores</li>
+                <li>Restaurações de amálgama antigas nos dentes posteriores</li>
+                <li>Facetas de desgaste nas faces palatinas dos dentes anteriores superiores</li>
+                <li>Hipertrofia dos músculos masseteres</li>
+                <li>Sensibilidade à percussão nos dentes 16, 26, 36 e 46</li>
+            </ul>
+            
+            <h4>Exames Complementares</h4>
+            <p>Foram realizados os seguintes exames complementares:</p>
+            <ul>
+                <li>Radiografias periapicais: espessamento do ligamento periodontal nos dentes 16, 26, 36 e 46</li>
+                <li>Radiografia panorâmica: ausência de lesões ósseas significativas</li>
+                <li>Modelos de estudo montados em articulador semi-ajustável</li>
+                <li>Enceramento diagnóstico para restabelecimento da dimensão vertical de oclusão</li>
+                <li>Documentação fotográfica</li>
+            </ul>
+            
+            <h4>Plano de Tratamento</h4>
+            <p>Foi estabelecido um plano de tratamento multidisciplinar, envolvendo as seguintes etapas:</p>
+            
+            <h5>Fase Inicial</h5>
+            <ol>
+                <li>Orientação sobre dieta e hábitos parafuncionais</li>
+                <li>Confecção de placa miorrelaxante para uso noturno</li>
+                <li>Prescrição de Ciclobenzaprina 5mg, 1 comprimido à noite por 15 dias, para relaxamento muscular</li>
+                <li>Aplicação de verniz fluoretado nos dentes com sensibilidade</li>
+                <li>Prescrição de dentifrício dessensibilizante com nitrato de potássio</li>
+            </ol>
+            
+            <h5>Fase Restauradora</h5>
+            <ol>
+                <li>Confecção de mock-up para teste da nova dimensão vertical de oclusão</li>
+                <li>Substituição das restaurações de amálgama por resina composta nos dentes posteriores</li>
+                <li>Tratamento endodôntico preventivo nos dentes 16, 26, 36 e 46 devido à exposição dentinária extensa e sintomatologia</li>
+                <li>Confecção de coroas totais em cerâmica pura nos dentes 16, 26, 36 e 46</li>
+                <li>Confecção de facetas cerâmicas nos dentes anteriores (13 ao 23 e 33 ao 43)</li>
+            </ol>
+            
+            <h5>Fase de Manutenção</h5>
+            <ol>
+                <li>Ajustes oclusais periódicos</li>
+                <li>Manutenção da placa miorrelaxante</li>
+                <li>Consultas de acompanhamento a cada 6 meses</li>
+                <li>Encaminhamento para avaliação psicológica para manejo do estresse</li>
+            </ol>
+            
+            <h4>Discussão Farmacológica</h4>
+            <p>A Ciclobenzaprina foi prescrita como relaxante muscular de ação central para alívio da hiperatividade muscular associada ao bruxismo. A dose de 5mg à noite foi escolhida para minimizar os efeitos adversos como sonolência diurna, boca seca e constipação. O uso foi limitado a 15 dias para evitar dependência e tolerância.</p>
+            
+            <p>O verniz fluoretado foi aplicado para remineralização do esmalte e redução da sensibilidade dentinária. O mecanismo de ação envolve a formação de fluoreto de cálcio, que atua como reservatório de flúor, e a oclusão dos túbulos dentinários expostos.</p>
+            
+            <p>O dentifrício dessensibilizante com nitrato de potássio foi recomendado para uso contínuo. O nitrato de potássio atua despolarizando as fibras nervosas pulpares, reduzindo a transmissão do estímulo doloroso.</p>
+            
+            <p>Durante os procedimentos restauradores, foi utilizada anestesia local com Articaína 4% com epinefrina 1:100.000, devido à sua eficácia em tecidos inflamados e boa difusão através dos tecidos duros. Para o controle da dor pós-operatória, foi prescrito Ibuprofeno 600mg a cada 8 horas por 3 dias.</p>
+            
+            <h4>Resultados</h4>
+            <p>Após 12 meses de tratamento, observou-se:</p>
+            <ul>
+                <li>Eliminação da sensibilidade dentária</li>
+                <li>Restabelecimento da dimensão vertical de oclusão e da função mastigatória</li>
+                <li>Melhora significativa da estética do sorriso</li>
+                <li>Redução da hipertrofia dos músculos masseteres</li>
+                <li>Diminuição da frequência e intensidade do bruxismo noturno com o uso da placa miorrelaxante</li>
+                <li>Adoção de hábitos alimentares mais saudáveis, com redução do consumo de bebidas ácidas</li>
+                <li>Melhora da qualidade do sono e redução do estresse, após acompanhamento psicológico</li>
+            </ul>
+            
+            <h4>Conclusão</h4>
+            <p>Este caso demonstra a importância da abordagem multidisciplinar no tratamento do desgaste dentário severo. A combinação de terapia farmacológica, procedimentos restauradores e mudanças comportamentais foi essencial para o sucesso do tratamento. O acompanhamento a longo prazo é fundamental para a manutenção dos resultados obtidos e prevenção de recidivas.</p>
+        </div>
+        
+        <div class="case-card">
+            <h3>Caso 3: Manejo Farmacológico em Paciente com Múltiplas Alergias a Medicamentos</h3>
+            
+            <div class="case-details">
+                <div class="case-detail">
+                    <h5>Paciente</h5>
+                    <p>Sexo feminino, 38 anos, professora</p>
+                </div>
+                <div class="case-detail">
+                    <h5>Queixa Principal</h5>
+                    <p>Dor intensa na região do dente 46</p>
+                </div>
+                <div class="case-detail">
+                    <h5>Diagnóstico</h5>
+                    <p>Abscesso periapical agudo no dente 46</p>
+                </div>
+            </div>
+            
+            <h4>História Médica</h4>
+            <p>Paciente relatou histórico de reações alérgicas a diversos medicamentos, incluindo:</p>
+            <ul>
+                <li>Penicilinas e derivados (urticária generalizada e edema de glote)</li>
+                <li>Anti-inflamatórios não esteroidais - AINEs (angioedema e broncoespasmo)</li>
+                <li>Dipirona (rash cutâneo)</li>
+                <li>Sulfas (urticária)</li>
+            </ul>
+            
+            <p>Apresentava também asma brônquica controlada com uso de corticosteroide inalatório (Budesonida) e hipotireoidismo em tratamento com Levotiroxina 50mcg/dia. Negou outras comorbidades.</p>
+            
+            <h4>Exame Clínico</h4>
+            <p>Ao exame clínico, observou-se:</p>
+            <ul>
+                <li>Edema e eritema na região vestibular do dente 46</li>
+                <li>Dor intensa à percussão vertical e horizontal</li>
+                <li>Mobilidade grau I</li>
+                <li>Restauração extensa de resina composta com recidiva de cárie</li>
+                <li>Resposta negativa aos testes de sensibilidade pulpar</li>
+                <li>Temperatura corporal de 37,8°C</li>
+            </ul>
+            
+            <h4>Exames Complementares</h4>
+            <p>A radiografia periapical revelou extensa lesão radiolúcida na região periapical do dente 46, com espessamento do ligamento periodontal e perda óssea localizada.</p>
+            
+            <h4>Desafio Terapêutico</h4>
+            <p>O principal desafio neste caso foi estabelecer um protocolo farmacológico eficaz para o controle da infecção e da dor, considerando as múltiplas alergias medicamentosas da paciente. As limitações incluíam:</p>
+            <ul>
+                <li>Impossibilidade de uso de antibióticos beta-lactâmicos (primeira escolha para infecções odontogênicas)</li>
+                <li>Contraindicação ao uso de AINEs e Dipirona para controle da dor e inflamação</li>
+                <li>Necessidade de anestesia local segura, considerando o histórico de alergias</li>
+            </ul>
+            
+            <h4>Conduta Terapêutica</h4>
+            <p>Após consulta com o alergista da paciente, foi estabelecido o seguinte protocolo:</p>
+            
+            <h5>Controle da Infecção</h5>
+            <ol>
+                <li>Drenagem do abscesso via canal radicular</li>
+                <li>Prescrição de Clindamicina 300mg, a cada 8 horas, por 7 dias (antibiótico alternativo para pacientes alérgicos à penicilina)</li>
+                <li>Bochechos com solução de clorexidina 0,12%, duas vezes ao dia</li>
+            </ol>
+            
+            <h5>Controle da Dor e Inflamação</h5>
+            <ol>
+                <li>Prescrição de Paracetamol 750mg, a cada 6 horas (analgésico com baixo potencial alergênico)</li>
+                <li>Prescrição de Prednisona 20mg, uma vez ao dia, por 3 dias, seguido de 10mg por mais 2 dias (anti-inflamatório esteroidal, considerado seguro para a paciente)</li>
+                <li>Aplicação local de compressas frias</li>
+            </ol>
+            
+            <h5>Procedimento Odontológico</h5>
+            <ol>
+                <li>Teste alérgico prévio com Mepivacaína 3% sem vasoconstritor (anestésico local com menor potencial alergênico)</li>
+                <li>Abertura coronária para drenagem e descompressão</li>
+                <li>Instrumentação do canal radicular com técnica crown-down</li>
+                <li>Medicação intracanal com hidróxido de cálcio</li>
+                <li>Restauração provisória com ionômero de vidro</li>
+            </ol>
+            
+            <h4>Discussão Farmacológica</h4>
+            <p>A Clindamicina foi escolhida como antibiótico alternativo devido à sua eficácia contra a maioria dos patógenos envolvidos em infecções odontogênicas e por ser uma opção segura para pacientes com alergia à penicilina. A dose de 300mg a cada 8 horas foi estabelecida para manter níveis séricos adequados do antibiótico.</p>
+            
+            <p>O Paracetamol, embora tenha ação anti-inflamatória limitada, foi a opção mais segura para analgesia, considerando o histórico de alergia a AINEs e Dipirona. A dose de 750mg a cada 6 horas foi prescrita para maximizar seu efeito analgésico.</p>
+            
+            <p>A Prednisona foi utilizada em esquema de dose decrescente para controle efetivo da inflamação, considerando que a paciente já fazia uso de corticosteroide inalatório para asma. O esquema de redução gradual visou minimizar os efeitos da supressão do eixo hipotálamo-hipófise-adrenal.</p>
+            
+            <p>A Mepivacaína 3% sem vasoconstritor foi selecionada como anestésico local por apresentar menor risco de reações alérgicas, já que não contém conservantes como o metilparabeno, frequentemente associado a reações de hipersensibilidade. Além disso, a ausência de vasoconstritor reduz o risco de reações adversas em pacientes asmáticos.</p>
+            
+            <h4>Resultados</h4>
+            <p>A paciente apresentou boa resposta ao tratamento, com:</p>
+            <ul>
+                <li>Remissão dos sintomas agudos após 48 horas</li>
+                <li>Ausência de reações alérgicas aos medicamentos prescritos</li>
+                <li>Controle adequado da dor com Paracetamol</li>
+                <li>Redução significativa do edema após o uso de Prednisona</li>
+                <li>Resolução completa da infecção após o curso de antibioticoterapia</li>
+            </ul>
+            
+            <p>O tratamento endodôntico foi concluído em três sessões, com obturação definitiva do canal radicular e restauração com coroa total metalocerâmica. No acompanhamento de 6 meses, observou-se reparo da lesão periapical e ausência de sintomatologia.</p>
+            
+            <h4>Conclusão</h4>
+            <p>Este caso ilustra a importância do conhecimento farmacológico aprofundado para o manejo de pacientes com múltiplas alergias medicamentosas. A escolha criteriosa dos medicamentos, considerando o perfil de segurança e as alternativas terapêuticas disponíveis, foi fundamental para o sucesso do tratamento. A abordagem multidisciplinar, com a participação do alergista, garantiu maior segurança na condução do caso.</p>
+        </div>
+        
+        <a href="index.html" class="back-button">Voltar para a Página Inicial</a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 FÁRMACO na ODONTOLOGIA - PROF. CAROLINE AZEVEDO - Todos os direitos reservados</p>
+        <p>Desenvolvido para a Faculdade do Recôncavo (FBBR)</p>
+    </footer>
+</body>
+</html>

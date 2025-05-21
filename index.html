@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FÁRMACO na ODONTOLOGIA</title>
+    <style>
+        :root {
+            --azul-principal: #0047AB;
+            --azul-claro: #6495ED;
+            --rosa-principal: #FF69B4;
+            --rosa-claro: #FFC0CB;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+            --texto: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--texto);
+            line-height: 1.6;
+            background-image: url('images/windows11_bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        header {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .main-button {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            color: var(--branco);
+            border: none;
+            padding: 2rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 200px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.2), rgba(255, 105, 180, 0.2));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .main-button:hover::before {
+            opacity: 1;
+        }
+        
+        .main-button:hover {
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .button-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .button-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            .buttons-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-button {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/fbbr.png" alt="Logo FBBR" class="logo">
+        </div>
+        <h1>FÁRMACO na ODONTOLOGIA</h1>
+    </header>
+    
+    <div class="main-container">
+        <div class="buttons-grid">
+            <a href="medicacoes.html" class="main-button">
+                <div class="button-icon">💊</div>
+                <div class="button-text">MEDICAÇÕES NA ODONTOLOGIA</div>
+            </a>
+            <a href="doencas.html" class="main-button">
+                <div class="button-icon">🦷</div>
+                <div class="button-text">DOENÇAS E TRATAMENTOS</div>
+            </a>
+            <a href="estudos.html" class="main-button">
+                <div class="button-icon">📋</div>
+                <div class="button-text">ESTUDO DE CASOS</div>
+            </a>
+            <a href="eventos.html" class="main-button">
+                <div class="button-icon">📸</div>
+                <div class="button-text">FOTOS DOS EVENTOS</div>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 FÁRMACO na ODONTOLOGIA - PROF. CAROLINE AZEVEDO- Todos os direitos reservados</p>
+        <p>Desenvolvido para a Faculdade do Recôncavo (FBBR)</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos dos Eventos - FÁRMACO na ODONTOLOGIA</title>
+    <style>
+        :root {
+            --azul-principal: #0047AB;
+            --azul-claro: #6495ED;
+            --rosa-principal: #FF69B4;
+            --rosa-claro: #FFC0CB;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+            --texto: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--texto);
+            line-height: 1.6;
+            background-image: url('images/windows11_bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        header {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            color: var(--branco);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            color: var(--azul-principal);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--rosa-principal);
+            display: inline-block;
+        }
+        
+        h3 {
+            color: var(--azul-principal);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-claro));
+            color: var(--branco);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(to right, var(--azul-principal), var(--azul-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .eventos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .evento-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .evento-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .evento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.2), rgba(255, 105, 180, 0.2));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .evento-card:hover::before {
+            opacity: 1;
+        }
+        
+        .evento-img-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .evento-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .evento-card:hover .evento-img {
+            transform: scale(1.1);
+        }
+        
+        .evento-info {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .evento-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--azul-principal);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .evento-card:hover .evento-title {
+            color: var(--rosa-principal);
+        }
+        
+        .evento-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .evento-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .evento-link {
+            display: inline-block;
+            color: var(--azul-principal);
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .evento-link:hover {
+            color: var(--rosa-principal);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.95);
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: var(--azul-principal);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--rosa-principal);
+        }
+        
+        .modal-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            color: var(--azul-principal);
+            margin-bottom: 10px;
+        }
+        
+        .modal-date {
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .calendar-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .calendar-title {
+            color: var(--azul-principal);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .calendar-month {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .month-title {
+            color: var(--rosa-principal);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .calendar-event {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .calendar-event:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .event-date {
+            font-weight: bold;
+            color: var(--azul-principal);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(255, 105, 180, 0.8));
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .content-container {
+                flex-direction: column;
+            }
+            
+            .eventos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/fbbr.png" alt="Logo FBBR" class="logo">
+        </div>
+        <h1>FÁRMACO na ODONTOLOGIA</h1>
+    </header>
+    
+    <div class="nav-container">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">Página Inicial</a>
+            <a href="medicacoes.html" class="nav-button">Medicações na Odontologia</a>
+            <a href="doencas.html" class="nav-button">Doenças e Tratamentos</a>
+            <a href="estudos.html" class="nav-button">Estudo de Casos</a>
+        </div>
+    </div>
+    
+    <section class="section">
+        <h2>FOTOS DOS EVENTOS</h2>
+        
+        <div class="content-container">
+            <div class="text-content">
+                <p>Bem-vindo à nossa galeria de eventos relacionados à Farmacologia na Odontologia! Aqui você encontrará registros fotográficos dos principais congressos, simpósios, workshops e jornadas acadêmicas dedicados ao estudo e aplicação de medicamentos no contexto odontológico.</p>
+                
+                <p>Os eventos científicos são fundamentais para a atualização profissional, troca de experiências e divulgação de novas pesquisas e tecnologias. Na área da Farmacologia aplicada à Odontologia, esses encontros permitem que cirurgiões-dentistas, farmacêuticos, pesquisadores e estudantes compartilhem conhecimentos sobre novos medicamentos, protocolos terapêuticos e avanços no manejo farmacológico de pacientes odontológicos.</p>
+                
+                <p>Navegue por nossa galeria e conheça os principais eventos da área. Clique nas imagens para visualizar mais detalhes sobre cada evento. Além disso, consulte nosso calendário anual para ficar por dentro dos próximos encontros científicos.</p>
+            </div>
+        </div>
+        
+        <div class="eventos-grid">
+            <div class="evento-card" onclick="openModal('evento1')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Congresso Brasileiro de Farmacologia Odontológica" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 1: Congresso Brasileiro de Farmacologia Odontológica</div>
+                    <div class="evento-date">15-18 de Março, 2025 | São Paulo</div>
+                    <div class="evento-description">Principal evento nacional dedicado exclusivamente à farmacologia aplicada à odontologia.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento1'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento2')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Simpósio Internacional de Anestésicos Locais" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 2: Simpósio Internacional de Anestésicos Locais</div>
+                    <div class="evento-date">22-24 de Abril, 2025 | Rio de Janeiro</div>
+                    <div class="evento-description">Evento focado nas inovações e avanços em anestesia local para procedimentos odontológicos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento2'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento3')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Workshop de Prescrição Medicamentosa em Odontologia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 3: Workshop de Prescrição Medicamentosa</div>
+                    <div class="evento-date">10-11 de Maio, 2025 | Belo Horizonte</div>
+                    <div class="evento-description">Curso prático sobre prescrição racional de medicamentos na prática odontológica.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento3'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento4')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Jornada de Farmacoterapia em Pacientes Especiais" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 4: Jornada de Farmacoterapia em Pacientes Especiais</div>
+                    <div class="evento-date">7-8 de Junho, 2025 | Salvador</div>
+                    <div class="evento-description">Evento dedicado ao manejo farmacológico de pacientes com necessidades especiais.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento4'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento5')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Encontro de Farmacologia Clínica para Dentistas" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 5: Encontro de Farmacologia Clínica para Dentistas</div>
+                    <div class="evento-date">19-21 de Julho, 2025 | Recife</div>
+                    <div class="evento-description">Evento com foco na aplicação clínica dos conhecimentos farmacológicos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento5'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento6')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Fórum de Antibioticoterapia em Odontologia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 6: Fórum de Antibioticoterapia em Odontologia</div>
+                    <div class="evento-date">15-16 de Agosto, 2025 | Brasília</div>
+                    <div class="evento-description">Discussões sobre uso racional de antibióticos e resistência antimicrobiana.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento6'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento7')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Simpósio de Interações Medicamentosas na Prática Odontológica" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 7: Simpósio de Interações Medicamentosas</div>
+                    <div class="evento-date">12-13 de Setembro, 2025 | Porto Alegre</div>
+                    <div class="evento-description">Evento focado nas interações entre medicamentos odontológicos e sistêmicos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento7'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento8')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Congresso de Terapêutica Medicamentosa em Odontopediatria" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 8: Congresso de Terapêutica em Odontopediatria</div>
+                    <div class="evento-date">3-5 de Outubro, 2025 | Curitiba</div>
+                    <div class="evento-description">Evento dedicado à farmacoterapia em crianças e adolescentes.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento8'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento9')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Jornada de Farmacologia em Cirurgia Bucomaxilofacial" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 9: Jornada de Farmacologia em Cirurgia Bucomaxilofacial</div>
+                    <div class="evento-date">24-25 de Outubro, 2025 | Fortaleza</div>
+                    <div class="evento-description">Evento focado no manejo farmacológico pré, trans e pós-operatório em cirurgias.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento9'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento10')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Simpósio de Farmacologia em Endodontia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 10: Simpósio de Farmacologia em Endodontia</div>
+                    <div class="evento-date">7-8 de Novembro, 2025 | Manaus</div>
+                    <div class="evento-description">Evento dedicado aos medicamentos utilizados em tratamentos endodônticos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento10'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento11')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Encontro de Farmacologia em Periodontia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 11: Encontro de Farmacologia em Periodontia</div>
+                    <div class="evento-date">21-22 de Novembro, 2025 | Goiânia</div>
+                    <div class="evento-description">Evento focado nos medicamentos utilizados no tratamento das doenças periodontais.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento11'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento12')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Workshop de Sedação Consciente em Odontologia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 12: Workshop de Sedação Consciente</div>
+                    <div class="evento-date">5-6 de Dezembro, 2025 | Florianópolis</div>
+                    <div class="evento-description">Curso prático sobre técnicas de sedação para controle da ansiedade em pacientes odontológicos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento12'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento13')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Simpósio de Farmacogenética em Odontologia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 13: Simpósio de Farmacogenética em Odontologia</div>
+                    <div class="evento-date">23-24 de Janeiro, 2026 | São Paulo</div>
+                    <div class="evento-description">Evento sobre a influência da genética na resposta aos medicamentos odontológicos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento13'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento14')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Jornada de Farmacologia em Estomatologia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 14: Jornada de Farmacologia em Estomatologia</div>
+                    <div class="evento-date">14-15 de Fevereiro, 2026 | Belém</div>
+                    <div class="evento-description">Evento dedicado ao tratamento farmacológico das doenças da mucosa oral.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento14'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento15')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Congresso de Farmacologia em Implantodontia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 15: Congresso de Farmacologia em Implantodontia</div>
+                    <div class="evento-date">7-9 de Março, 2026 | Natal</div>
+                    <div class="evento-description">Evento focado no manejo farmacológico de pacientes submetidos a implantes dentários.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento15'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento16')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Simpósio de Analgesia em Odontologia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 16: Simpósio de Analgesia em Odontologia</div>
+                    <div class="evento-date">18-19 de Abril, 2026 | João Pessoa</div>
+                    <div class="evento-description">Evento dedicado ao controle da dor em procedimentos odontológicos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento16'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento17')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Fórum de Farmacologia em Ortodontia" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 17: Fórum de Farmacologia em Ortodontia</div>
+                    <div class="evento-date">9-10 de Maio, 2026 | Vitória</div>
+                    <div class="evento-description">Evento sobre o uso de medicamentos para controle da dor e inflamação em tratamentos ortodônticos.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento17'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento18')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_3.webp" alt="Jornada de Farmacologia para Pacientes Geriátricos" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 18: Jornada de Farmacologia para Pacientes Geriátricos</div>
+                    <div class="evento-date">6-7 de Junho, 2026 | Campo Grande</div>
+                    <div class="evento-description">Evento dedicado ao manejo farmacológico de pacientes idosos na odontologia.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento18'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento19')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_1.webp" alt="Simpósio de Farmacologia em Disfunções Temporomandibulares" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 19: Simpósio de Farmacologia em DTM</div>
+                    <div class="evento-date">18-19 de Julho, 2026 | Cuiabá</div>
+                    <div class="evento-description">Evento focado no tratamento farmacológico das disfunções temporomandibulares.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento19'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+            
+            <div class="evento-card" onclick="openModal('evento20')">
+                <div class="evento-img-container">
+                    <img src="images/tratamento_odontologico_2.webp" alt="Congresso Internacional de Farmacologia Odontológica" class="evento-img">
+                </div>
+                <div class="evento-info">
+                    <div class="evento-title">Evento 20: Congresso Internacional de Farmacologia Odontológica</div>
+                    <div class="evento-date">22-25 de Agosto, 2026 | Rio de Janeiro</div>
+                    <div class="evento-description">Principal evento internacional de farmacologia aplicada à odontologia, com palestrantes de diversos países.</div>
+                    <a href="#" class="evento-link" onclick="openModal('evento20'); event.preventDefault();">Ver mais</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="calendar-section">
+            <h3 class="calendar-title">Calendário de Eventos 2025-2026</h3>
+            
+            <div class="calendar-grid">
+                <div class="calendar-month">
+                    <h4 class="month-title">Janeiro - Março 2025</h4>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">15-18 de Março</div>
+                        <div>Congresso Brasileiro de Farmacologia Odontológica</div>
+                        <div>Local: São Paulo, SP</div>
+                    </div>
+                </div>
+                
+                <div class="calendar-month">
+                    <h4 class="month-title">Abril - Junho 2025</h4>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">22-24 de Abril</div>
+                        <div>Simpósio Internacional de Anestésicos Locais</div>
+                        <div>Local: Rio de Janeiro, RJ</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">10-11 de Maio</div>
+                        <div>Workshop de Prescrição Medicamentosa em Odontologia</div>
+                        <div>Local: Belo Horizonte, MG</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">7-8 de Junho</div>
+                        <div>Jornada de Farmacoterapia em Pacientes Especiais</div>
+                        <div>Local: Salvador, BA</div>
+                    </div>
+                </div>
+                
+                <div class="calendar-month">
+                    <h4 class="month-title">Julho - Setembro 2025</h4>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">19-21 de Julho</div>
+                        <div>Encontro de Farmacologia Clínica para Dentistas</div>
+                        <div>Local: Recife, PE</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">15-16 de Agosto</div>
+                        <div>Fórum de Antibioticoterapia em Odontologia</div>
+                        <div>Local: Brasília, DF</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">12-13 de Setembro</div>
+                        <div>Simpósio de Interações Medicamentosas na Prática Odontológica</div>
+                        <div>Local: Porto Alegre, RS</div>
+                    </div>
+                </div>
+                
+                <div class="calendar-month">
+                    <h4 class="month-title">Outubro - Dezembro 2025</h4>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">3-5 de Outubro</div>
+                        <div>Congresso de Terapêutica Medicamentosa em Odontopediatria</div>
+                        <div>Local: Curitiba, PR</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">24-25 de Outubro</div>
+                        <div>Jornada de Farmacologia em Cirurgia Bucomaxilofacial</div>
+                        <div>Local: Fortaleza, CE</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">7-8 de Novembro</div>
+                        <div>Simpósio de Farmacologia em Endodontia</div>
+                        <div>Local: Manaus, AM</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">21-22 de Novembro</div>
+                        <div>Encontro de Farmacologia em Periodontia</div>
+                        <div>Local: Goiânia, GO</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">5-6 de Dezembro</div>
+                        <div>Workshop de Sedação Consciente em Odontologia</div>
+                        <div>Local: Florianópolis, SC</div>
+                    </div>
+                </div>
+                
+                <div class="calendar-month">
+                    <h4 class="month-title">Janeiro - Março 2026</h4>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">23-24 de Janeiro</div>
+                        <div>Simpósio de Farmacogenética em Odontologia</div>
+                        <div>Local: São Paulo, SP</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">14-15 de Fevereiro</div>
+                        <div>Jornada de Farmacologia em Estomatologia</div>
+                        <div>Local: Belém, PA</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">7-9 de Março</div>
+                        <div>Congresso de Farmacologia em Implantodontia</div>
+                        <div>Local: Natal, RN</div>
+                    </div>
+                </div>
+                
+                <div class="calendar-month">
+                    <h4 class="month-title">Abril - Agosto 2026</h4>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">18-19 de Abril</div>
+                        <div>Simpósio de Analgesia em Odontologia</div>
+                        <div>Local: João Pessoa, PB</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">9-10 de Maio</div>
+                        <div>Fórum de Farmacologia em Ortodontia</div>
+                        <div>Local: Vitória, ES</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">6-7 de Junho</div>
+                        <div>Jornada de Farmacologia para Pacientes Geriátricos</div>
+                        <div>Local: Campo Grande, MS</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">18-19 de Julho</div>
+                        <div>Simpósio de Farmacologia em Disfunções Temporomandibulares</div>
+                        <div>Local: Cuiabá, MT</div>
+                    </div>
+                    
+                    <div class="calendar-event">
+                        <div class="event-date">22-25 de Agosto</div>
+                        <div>Congresso Internacional de Farmacologia Odontológica</div>
+                        <div>Local: Rio de Janeiro, RJ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-button">Voltar para a Página Inicial</a>
+    </section>
+    
+    <!-- Modais para cada evento -->
+    <div id="evento1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('evento1')">&times;</span>
+            <img src="images/tratamento_odontologico_1.webp" alt="Congresso Brasileiro de Farmacologia Odontológica" class="modal-img">
+            <h3 class="modal-title">Congresso Brasileiro de Farmacologia Odontológica</h3>
+            <div class="modal-date">15-18 de Março, 2025 | São Paulo, SP</div>
+            <div class="modal-description">
+                <p>O Congresso Brasileiro de Farmacologia Odontológica é o principal evento nacional dedicado exclusivamente ao estudo e aplicação de medicamentos no contexto odontológico. Em sua 12ª edição, o congresso reunirá renomados especialistas nacionais e internacionais para discutir os avanços mais recentes na área.</p>
+                
+                <p>A programação científica inclui conferências, mesas-redondas, apresentações de trabalhos científicos e cursos práticos sobre temas como anestésicos locais, antibióticos, anti-inflamatórios, analgésicos, ansiolíticos e medicamentos de uso tópico em odontologia.</p>
+                
+                <p>O evento é organizado pela Sociedade Brasileira de Farmacologia Aplicada à Odontologia (SBFAO) e conta com o apoio do Conselho Federal de Odontologia (CFO) e da Associação Brasileira de Ensino Odontológico (ABENO).</p>
+                
+                <p><strong>Principais temas:</strong></p>
+                <ul>
+                    <li>Avanços em anestesia local</li>
+                    <li>Uso racional de antibióticos em odontologia</li>
+                    <li>Manejo farmacológico da dor orofacial</li>
+                    <li>Interações medicamentosas relevantes para a odontologia</li>
+                    <li>Farmacologia em pacientes com necessidades especiais</li>
+                </ul>
+                
+                <p><strong>Informações:</strong> www.congressofarmacoodonto.com.br</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="evento2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('evento2')">&times;</span>
+            <img src="images/tratamento_odontologico_2.webp" alt="Simpósio Internacional de Anestésicos Locais" class="modal-img">
+            <h3 class="modal-title">Simpósio Internacional de Anestésicos Locais</h3>
+            <div class="modal-date">22-24 de Abril, 2025 | Rio de Janeiro, RJ</div>
+            <div class="modal-description">
+                <p>O Simpósio Internacional de Anestésicos Locais é um evento bienal que reúne especialistas de diversos países para discutir os avanços e desafios na área de anestesia local em odontologia. Em sua 8ª edição, o simpósio terá como tema central "Inovações em Anestesia Local: Eficácia, Segurança e Conforto do Paciente".</p>
+                
+                <p>A programação científica inclui palestras, workshops práticos e sessões de discussão de casos clínicos, abordando temas como novos anestésicos locais, técnicas de anestesia, manejo de complicações, anestesia em pacientes especiais e controle da dor e ansiedade.</p>
+                
+                <p>O evento é organizado pela Sociedade Brasileira de Anestesiologia em Odontologia (SBAO) em parceria com a International Federation of Dental Anesthesiology Societies (IFDAS).</p>
+                
+                <p><strong>Principais temas:</strong></p>
+                <ul>
+                    <li>Novos anestésicos locais e sistemas de liberação</li>
+                    <li>Técnicas avançadas de anestesia local</li>
+                    <li>Manejo de falhas anestésicas</li>
+                    <li>Prevenção e tratamento de complicações</li>
+                    <li>Anestesia local em pacientes com comorbidades</li>
+                </ul>
+                
+                <p><strong>Informações:</strong> www.simposioanestesiaodonto.com.br</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modais para os demais eventos seguem o mesmo padrão -->
+    
+    <footer>
+        <p>&copy; 2025 FÁRMACO na ODONTOLOGIA - PROF. CAROLINE AZEVEDO - Todos os direitos reservados</p>
+        <p>Desenvolvido para a Faculdade do Recôncavo (FBBR)</p>
+    </footer>
+    
+    <script>
+        // Funções para abrir e fechar os modais
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        
+        // Fechar modal ao clicar fora da área de conteúdo
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
